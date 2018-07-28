@@ -1,6 +1,7 @@
 from __future__ import print_function
-import datreant as dtr
+
 import click
+import datreant as dtr
 
 
 class OptionEatAll(click.Option):
@@ -63,6 +64,7 @@ def init(folder):
 
 
 def print_treant(treant, verbose=False):
+    """print treant with more human readable information"""
     print("abspath: ", treant)
     if verbose:
         print("tags: ", treant.tags)
@@ -95,8 +97,8 @@ def update(tags, categories, folder):
     if tags is not None:
         treant.tags = set(tags)
     if categories is not None:
-        for k, v in (c.split(":") for c in categories):
-            treant.categories[k] = v
+        for key, value in (c.split(":") for c in categories):
+            treant.categories[key] = value
 
 
 @cli.command()
@@ -115,7 +117,7 @@ def search(tags, folder, categories, verbose):
     if tags is not None:
         if len(tags) != 1:
             tags = set(tags)
-        bundle = buundle[bundle.tags[tags]]
+        bundle = bundle[bundle.tags[tags]]
 
     if categories is not None:
         categories = {k: v for k, v in (c.split(":") for c in categories)}
