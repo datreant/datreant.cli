@@ -122,7 +122,10 @@ def search(tags, folder, categories, verbose):
         bundle = groupby[set(categories.values())]
 
     for treant in bundle:
-        print_treant(treant, verbose=verbose)
+        if verbose:
+            print_treant(treant, verbose=True)
+        else:
+            print(treant.abspath)
 
 
 @cli.command()
@@ -130,7 +133,10 @@ def search(tags, folder, categories, verbose):
 @click.option("--verbose", is_flag=True, help="list tags and categories as well")
 def list(folder, verbose):
     for treant in dtr.discover(folder):
-        print_treant(treant, verbose=verbose)
+        if verbose:
+            print_treant(treant, verbose=verbose)
+        else:
+            print(treant.abspath)
 
 
 # for easier debugging
