@@ -29,8 +29,7 @@ Using datreant.cli
 You should have a new command `dtr` available.
 
 For example to look how many files are in each simulation of 1AKE that are
-created with gromacs one could use the following line, assuming 1AKE and gromacs
-are tags::
+created with gromacs one could use the following line, assuming 1AKE as tag and gromacs=2016.4 as a categories key:value pair::
 
    for f in $(dtr search simulations --tags=1AKE --categories gromacs:2016.4)
    do
