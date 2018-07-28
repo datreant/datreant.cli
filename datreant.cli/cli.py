@@ -128,17 +128,6 @@ def search(tags, folder, categories, verbose):
             print(treant.abspath)
 
 
-@cli.command()
-@click.argument("folder", default=".")
-@click.option("--verbose", is_flag=True, help="list tags and categories as well")
-def list(folder, verbose):
-    for treant in dtr.discover(folder):
-        if verbose:
-            print_treant(treant, verbose=verbose)
-        else:
-            print(treant.abspath)
-
-
 # for easier debugging
 if __name__ == "__main__":
     cli()
