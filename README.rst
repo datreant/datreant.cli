@@ -32,7 +32,7 @@ For example to look how many files are in each simulation of 1AKE that are
 created with gromacs one could use the following line, assuming 1AKE and gromacs
 are tags::
 
-   for f in $(dtr search simulations --tags=1AKE,gromacs)
+   for f in $(dtr search simulations --tags=1AKE --categories gromacs:2016.4)
    do
        ls $l | wc -l
    done
