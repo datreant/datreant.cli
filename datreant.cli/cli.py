@@ -58,7 +58,7 @@ def cli():
 @cli.command()
 @click.argument("folder", default=".")
 def init(folder):
-    """turn folder into"""
+    """turn folder into a treant"""
     dtr.Treant(folder)
 
 
@@ -72,7 +72,7 @@ def print_treant(treant, verbose=False):
 @cli.command()
 @click.argument("folder", default=".")
 def show(folder):
-    """turn folder into"""
+    """show content of treant"""
     tree = dtr.Tree(folder)
     if tree[".datreant"].exists:
         treant = dtr.Treant(folder)
@@ -90,7 +90,7 @@ def show(folder):
 )
 @click.argument("folder", default=".")
 def update(tags, categories, folder):
-    """update tags and categories in folder"""
+    """update tags and categories of treant"""
     treant = dtr.Treant(folder)
     if tags is not None:
         treant.tags = set(tags)
@@ -109,6 +109,7 @@ def update(tags, categories, folder):
 )
 @click.option("--verbose", is_flag=True, help="list tags and categories as well")
 def search(tags, folder, categories, verbose):
+    """search folder for treants and list them"""
     bundle = dtr.discover(folder)
 
     if tags is not None:
