@@ -12,7 +12,7 @@ from setuptools import setup, find_packages
 print(find_packages())
 
 setup(
-    name="datreant.cli",
+    name="datreant_cli",
     version="0.7.0-dev",
     description="convenient CLI interface for Treant directories",
     author="Max Linke",
@@ -33,5 +33,5 @@ setup(
     license="BSD",
     long_description=open("README.rst").read(),
     install_requires=["datreant", "six", "click"],
-    entry_points={"console_scripts": ["dtr=datreant.cli.cli:cli"]},
+    entry_points={"console_scripts": ["dtr=datreant_cli.cli:cli"]},
 )
