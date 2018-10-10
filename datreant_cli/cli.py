@@ -100,8 +100,15 @@ def update(tags, categories, folder):
     if tags is not None:
         treant.tags = set(tags)
     if categories is not None:
-        for key, value in (c.split(":") for c in categories):
-            treant.categories[key] = value
+        try:
+            # Try if we got the expected `key:value` pair from the user.
+            for key, value in (c.split(":") for c in categories):
+                treant.categories[key] = value
+        except ValueError:
+            # The user provided us only with a key, but no value. Prompt them for a value.
+            for category in categories:
+                value = click.prompt("Please specify a value for {category}".format(category=category))
+                treant.categories[category] = value
 
 
 @cli.command()
